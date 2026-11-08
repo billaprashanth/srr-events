@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --maroon: #7a1426;
+  --gold: #c99a3e;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  @apply bg-white font-sans text-ink antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+::selection {
+  background: #f3e4c0;
+  color: #5c0e1c;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-14;
+  }
+  .kicker {
+    @apply flex items-center gap-3 text-[12px] font-medium uppercase tracking-kicker text-ink/70;
+  }
+  .kicker::before {
+    content: "";
+    @apply block h-px w-8 bg-gold;
+  }
+  .h-display {
+    @apply font-display font-bold tracking-[-0.022em] leading-[0.98];
+    word-spacing: 0.06em;
+  }
+  .grad {
+    background: linear-gradient(90deg, #7a1426 0%, #a8323b 40%, #d39a4a 75%, #e6c677 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-bottom: 0.08em;
+  }
+  .grad-rev {
+    background: linear-gradient(90deg, #d8ae55 0%, #b8613c 45%, #7a1426 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-bottom: 0.08em;
+  }
+  .btn {
+    @apply relative inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-[15px] font-semibold transition-all duration-300 sm:text-base;
+  }
+  .btn-maroon {
+    @apply btn bg-maroon-700 text-white shadow-[0_10px_30px_-10px_rgba(122,20,38,.7),inset_0_0_0_1px_rgba(230,198,119,.55)] hover:bg-maroon-800;
+  }
+  .btn-white {
+    @apply btn bg-white text-ink shadow-[0_10px_30px_-12px_rgba(0,0,0,.35)] hover:bg-ivory;
+  }
+  .btn-dot {
+    @apply grid h-9 w-9 place-items-center rounded-full transition-transform duration-300 sm:h-10 sm:w-10;
+  }
+  .btn:hover .btn-dot {
+    transform: rotate(45deg);
+  }
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-2 text-sm font-medium text-ink/80 transition-all hover:border-gold/60;
+  }
+  .icon-btn {
+    @apply grid h-10 w-10 place-items-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-maroon/40 hover:text-maroon;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* temple-arch (gopuram) window */
+.arch-clip {
+  clip-path: url(#gopuram);
+}
+
+.fade-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
+.fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
